@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - Cartify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo-container">
+      <span class="logo-text">Cartify</span>
+    </div>
+    <a href="index.html" class="cart-icon">⬅ Back to Shop</a>
+  </nav>
+
+  <section style="padding:20px;">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+
+    <h3 id="cart-total" style="margin-top:20px;"></h3>
+
+    <button id="checkoutBtn" style="
+      margin-top:15px;
+      padding:10px;
+      background:#007bff;
+      color:white;
+      border:none;
+      border-radius:6px;
+      width:100%;
+      cursor:pointer;
+    ">
+      Proceed to Checkout
+    </button>
+  </section>
+
+  <script src="cart.js"></script>
+</body>
+</html>
