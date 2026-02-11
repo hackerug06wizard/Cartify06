@@ -2,28 +2,28 @@ const products = [
   {
     id: 1,
     name: "Smartphone",
-    price: 700,
+    price: 2500000,
     category: "electronics",
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
   },
   {
     id: 2,
     name: "Headphones",
-    price: 120,
+    price: 350000,
     category: "electronics",
     image: "https://images.unsplash.com/photo-1518444028785-8fbcd101ebb9"
   },
   {
     id: 3,
     name: "T-Shirt",
-    price: 30,
+    price: 45000,
     category: "fashion",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
   },
   {
     id: 4,
     name: "Sofa",
-    price: 500,
+    price: 1200000,
     category: "home",
     image: "https://images.unsplash.com/photo-1505693314120-0d443867891c"
   }
@@ -31,6 +31,11 @@ const products = [
 
 const productsContainer = document.getElementById("products");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* Format UGX */
+function formatUGX(amount) {
+  return "UGX " + amount.toLocaleString();
+}
 
 /* Update Cart Counter */
 function updateCartCount() {
@@ -54,11 +59,13 @@ function renderProducts(filter = "all") {
     card.innerHTML = `
       <img src="${product.image}" alt="${product.name}">
       <h3>${product.name}</h3>
-      <p>$${product.price}</p>
+      <p>${formatUGX(product.price)}</p>
       <button>Add to Cart</button>
     `;
 
-    card.querySelector("button").addEventListener("click", () => {
+    const button = card.querySelector("button");
+
+    button.addEventListener("click", () => {
       const existing = cart.find(item => item.id === product.id);
       if (existing) {
         existing.quantity++;
@@ -68,7 +75,15 @@ function renderProducts(filter = "all") {
 
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
-      alert("Added to cart!");
+
+      // Change button text instead of alert
+      button.innerText = "Added ✓";
+      button.classList.add("added");
+
+      setTimeout(() => {
+        button.innerText = "Add to Cart";
+        button.classList.remove("added");
+      }, 1500);
     });
 
     productsContainer.appendChild(card);
