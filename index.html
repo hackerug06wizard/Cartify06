@@ -8,18 +8,32 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo">Cartify</div>
+    <div class="logo-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="logo-img">
+      <span class="logo-text">Cartify</span>
+    </div>
+
     <div class="cart-icon">
       🛒 <span id="cart-count">0</span>
     </div>
   </nav>
 
-  <section class="hero">
-    <h1>Welcome to Cartify</h1>
-    <p>Your one-stop online shop in Uganda</p>
+  <!-- SEARCH & FILTER -->
+  <section class="filters">
+
+    <input type="text" id="searchInput" placeholder="Search products...">
+
+    <div class="price-filter">
+      <input type="number" id="minPrice" placeholder="Min UGX">
+      <input type="number" id="maxPrice" placeholder="Max UGX">
+      <button id="filterBtn">Filter</button>
+    </div>
+
   </section>
 
+  <!-- CATEGORY FILTER -->
   <section class="categories">
     <button data-category="all">All</button>
     <button data-category="electronics">Electronics</button>
@@ -27,6 +41,7 @@
     <button data-category="home">Home</button>
   </section>
 
+  <!-- PRODUCTS -->
   <section id="products" class="products"></section>
 
   <script src="main.js"></script>
