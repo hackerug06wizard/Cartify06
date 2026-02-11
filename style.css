@@ -13,10 +13,11 @@ body {
 .navbar {
   background: #111;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo-container {
@@ -31,16 +32,16 @@ body {
 }
 
 .logo-text {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .cart-icon {
-  font-size: 18px;
-  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
 }
 
-/* SEARCH & FILTER */
+/* SEARCH & FILTER SECTION */
 .filters {
   padding: 15px;
   display: flex;
@@ -49,79 +50,97 @@ body {
 }
 
 .filters input {
-  padding: 8px;
-  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
 }
 
+/* PRICE FILTER */
 .price-filter {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+}
+
+.price-filter input {
+  flex: 1;
+  min-width: 100px;
 }
 
 .price-filter button {
-  padding: 8px;
+  padding: 10px;
   background: #007bff;
   border: none;
   color: white;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 /* CATEGORIES */
 .categories {
   display: flex;
-  justify-content: center;
   gap: 8px;
   padding: 10px;
-  flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .categories button {
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: none;
   background: #007bff;
   color: white;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-/* PRODUCTS */
+/* PRODUCTS GRID */
 .products {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 20px;
+  gap: 12px;
+  padding: 15px;
 }
 
-@media(min-width:768px){
+/* Tablet */
+@media (min-width: 600px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
   .products {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/* PRODUCT CARD */
 .product-card {
   background: white;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .product-card img {
   width: 100%;
-  height: 140px;
+  height: 130px;
   object-fit: cover;
   border-radius: 8px;
 }
 
 .product-card h3 {
-  font-size: 15px;
+  font-size: 14px;
   margin: 8px 0;
 }
 
 .product-card p {
   font-weight: bold;
+  font-size: 14px;
   margin-bottom: 8px;
 }
 
@@ -129,12 +148,13 @@ body {
   background: #28a745;
   color: white;
   border: none;
-  padding: 6px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 6px;
   width: 100%;
   cursor: pointer;
+  font-size: 13px;
 }
 
 .product-card button.added {
   background: #555;
-    }
+  }
