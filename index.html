@@ -2,60 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Cartify</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartify – Everything You Need</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
+
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="Cartify Logo" />
-      <span>Cartify</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="#">Deals</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <input type="text" id="search" placeholder="Search products...">
-      <button id="login-btn">Login</button>
-      <div class="cart-icon">
-        🛒 <span id="cart-count">0</span>
-      </div>
+    <div class="logo">Cartify</div>
+    <div class="cart-icon">
+      🛒 <span id="cart-count">0</span>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
-    <h1>Cartify – Everything You Need, One Cart.</h1>
-    <div class="hero-buttons">
-      <a href="shop.html" class="btn">Shop Now</a>
-      <a href="categories.html" class="btn">Browse Categories</a>
-    </div>
-  </section>
-  <!-- CATEGORIES SECTION -->
-<section class="categories">
-  <h2>Shop by Category</h2>
-  <div class="category-list">
-    <button class="category-btn" data-category="all">All</button>
-    <button class="category-btn" data-category="electronics">Electronics</button>
-    <button class="category-btn" data-category="fashion">Fashion</button>
-    <button class="category-btn" data-category="groceries">Groceries</button>
-    <button class="category-btn" data-category="home">Home & Kitchen</button>
-    <button class="category-btn" data-category="beauty">Beauty</button>
-  </div>
-</section>
-  <!-- PRODUCT LISTING -->
-<section class="product-listing">
-  <div class="products" id="products-container">
-    <!-- Product cards will be injected by JS -->
-  </div>
+    <h1>Welcome to Cartify</h1>
+    <p>Your one-stop online shop</p>
   </section>
 
-  <script src="js/main.js" type="module"></script>
+  <!-- CATEGORY FILTER -->
+  <section class="categories">
+    <button data-category="all">All</button>
+    <button data-category="electronics">Electronics</button>
+    <button data-category="fashion">Fashion</button>
+    <button data-category="home">Home</button>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="products"></section>
+
+  <script src="main.js"></script>
 </body>
-  </html>
+</html>
