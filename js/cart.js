@@ -1,57 +1,55 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const cartItemsContainer = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
 
-function formatUGX(amount) {
-  return "UGX " + amount.toLocaleString();
-}
+const container = document.getElementById("cart-container");
+const totalDisplay = document.getElementById("cart-total");
 
 function renderCart() {
-  cartItemsContainer.innerHTML = "";
+    container.innerHTML = "";
+    let total = 0;
 
-  if (cart.length === 0) {
-    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-    cartTotal.innerText = "";
-    return;
-  }
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
 
-  let total = 0;
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
 
-  cart.forEach((item, index) => {
-    total += item.price * item.quantity;
+        itemDiv.innerHTML = `
+            <img src="${item.image}" class="cart-img">
+            <div class="cart-info">
+                <h4>${item.name}</h4>
+                <p>UGX ${item.price.toLocaleString()}</p>
 
-    const div = document.createElement("div");
-    div.style.marginBottom = "15px";
-    div.style.padding = "10px";
-    div.style.background = "white";
-    div.style.borderRadius = "8px";
-    div.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+                <div class="quantity-controls">
+                    <button onclick="decreaseQty(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQty(${index})">+</button>
+                </div>
+            </div>
+        `;
 
-    div.innerHTML = `
-      <h4>${item.name}</h4>
-      <p>Price: ${formatUGX(item.price)}</p>
-      <p>Quantity: ${item.quantity}</p>
-      <p>Total: ${formatUGX(item.price * item.quantity)}</p>
-      <button onclick="removeItem(${index})"
-        style="background:red;color:white;border:none;padding:5px;border-radius:5px;">
-        Remove
-      </button>
-    `;
+        container.appendChild(itemDiv);
+    });
 
-    cartItemsContainer.appendChild(div);
-  });
-
-  cartTotal.innerText = "Grand Total: " + formatUGX(total);
+    totalDisplay.textContent = total.toLocaleString();
 }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
+function increaseQty(index) {
+    cart[index].quantity += 1;
+    saveCart();
 }
 
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  alert("Checkout coming soon 🚀");
-});
+function decreaseQty(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+    saveCart();
+}
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
 
 renderCart();
